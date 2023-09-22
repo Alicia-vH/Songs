@@ -12,9 +12,9 @@
         <link href="https://fonts.bunny.net/css?family=dotgothic16:400,600&display=swap" rel="stylesheet" />
     </head>
 
-    <header class="bg-metal h-8 text-center text-black font-bold"></header>
+    <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Create</header>
 
-    <body  class="bg-silver text-center text-purple">
+    <body class="bg-pastel text-center text-black">
 
         <form action="" method="POST">
             <table>
@@ -22,8 +22,8 @@
                     <td>Song:</td>
                     <td><input type="text" name="song" placeholder="Enter a song." ></td>
                 </tr>
-                    <td><input type="submit" name="submit" value="Submit"></td>
                 <tr>
+                    <td><input type="submit" name="submit" value="Submit"></td>
                 </tr>
             </table>
         </form>
@@ -34,6 +34,6 @@
 
     </body>
 
-    <footer class="bg-metal h-8">&nbsp;</footer>
+
 
 </html>

@@ -12,11 +12,11 @@
         <link href="https://fonts.bunny.net/css?family=dotgothic16:400,600&display=swap" rel="stylesheet" />
     </head>
 
-    <header class="bg-metal h-8 text-center text-black font-bold"> HOI</header>
+    <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Welcome</header>
 
-    <body class="bg-silver text-center text-purple">
+    <body class="bg-pastel text-center text-black">
 
-       <h1>Songs:</h1>
+       <h1 class="text-2xl">Songs:</h1>
        <ul>
             @foreach($songs as $song)
                 <li><a href="/songs/{{$loop->index}}">{{$song}}</a></li>
@@ -29,6 +29,6 @@
 
     </body>
 
-    <footer class="bg-metal h-8">&nbsp;</footer>
+
 
 </html>

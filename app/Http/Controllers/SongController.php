@@ -47,7 +47,7 @@ class SongController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('songs.edit');
     }
 
     /**

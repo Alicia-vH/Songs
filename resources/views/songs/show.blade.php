@@ -12,13 +12,18 @@
         <link href="https://fonts.bunny.net/css?family=dotgothic16:400,600&display=swap" rel="stylesheet" />
     </head>
 
-    <header></header>
+    <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Chosen Song</header>
 
-    <body>
-        <h1>Het gekozen nummer: {{$song}}</h1>
+    <body class="bg-pastel text-center text-black">
+        <h1 class="font-bold">Het gekozen nummer: {{$song}}</h1>
+
+        <ul>
+            <li class="text-right"><a href="/songs/{index}/edit">Edit!</a></li>
+            <li class="text-right"><a href="/songs">Back to home!</a></li>
+        </ul>
 
     </body>
 
-    <footer></footer>
+
 
 </html>
