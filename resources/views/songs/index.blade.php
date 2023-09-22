@@ -15,7 +15,7 @@
     <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Welcome</header>
 
     <body class="bg-pastel text-center text-black">
-
+       <br>
        <h1 class="text-2xl font-medium">Songs:</h1>
        <ul>
             @foreach($songs as $song)

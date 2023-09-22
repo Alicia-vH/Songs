@@ -15,7 +15,7 @@
     <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Create</header>
 
     <body class="bg-pastel text-center text-black">
-
+        <br>
         <form action="" method="POST">
             <table>
                 <tr>

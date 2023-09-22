@@ -15,12 +15,12 @@
     <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Edit</header>
 
     <body class="bg-pastel text-center text-black">
-
+        <br>
         <form action="" method="POST">
             <table>
                 <tr>
                     <td>Song:</td>
-                    <td><input type="text" name="song" placeholder="Edit this song." ></td>
+                    <td><input type="text" name="song" placeholder="Edit this song." value="{{$song}}"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Submit"></td>

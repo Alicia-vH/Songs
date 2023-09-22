@@ -39,7 +39,7 @@ class SongController extends Controller
     {
         $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
 
-        return view('songs.show', ['song' => $songs[$id]]);
+        return view('songs.show', ['song' => $songs[$id], 'index' => $id]);
     }
 
     /**
@@ -47,7 +47,9 @@ class SongController extends Controller
      */
     public function edit(string $id)
     {
-        return view('songs.edit');
+        $songs = ['Living on a prayer', 'Nothing else matters', 'Thunderstruck', 'Back in black', 'Ace of spades'];
+
+        return view('songs.edit', ['song' => $songs[$id]]);
     }
 
     /**

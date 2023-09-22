@@ -15,10 +15,11 @@
     <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Chosen Song</header>
 
     <body class="bg-pastel text-center text-black">
+        <br>
         <h1 class="font-bold">Het gekozen nummer: {{$song}}</h1>
 
         <ul>
-            <li class="text-right"><a href="/songs/{index}/edit">Edit!</a></li>
+            <li class="text-right"><a href="/songs/{{$index}}/edit">Edit!</a></li>
             <li class="text-right"><a href="/songs">Back to home!</a></li>
         </ul>
 
