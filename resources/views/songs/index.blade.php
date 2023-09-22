@@ -16,7 +16,7 @@
 
     <body class="bg-pastel text-center text-black">
 
-       <h1 class="text-2xl">Songs:</h1>
+       <h1 class="text-2xl font-medium">Songs:</h1>
        <ul>
             @foreach($songs as $song)
                 <li><a href="/songs/{{$loop->index}}">{{$song}}</a></li>
