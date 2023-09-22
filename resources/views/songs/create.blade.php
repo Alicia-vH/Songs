@@ -22,7 +22,9 @@
                     <td>Song:</td>
                     <td><input type="text" name="song" placeholder="Enter a song." ></td>
                 </tr>
-
+                    <td><input type="submit" name="submit" value="Submit"></td>
+                <tr>
+                </tr>
             </table>
         </form>
 
