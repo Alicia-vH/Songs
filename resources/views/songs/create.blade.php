@@ -16,10 +16,18 @@
 
     <body  class="bg-silver text-center text-purple">
 
-        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+        <form action="" method="POST">
+            <table>
+                <tr>
+                    <td>Song:</td>
+                    <td><input type="text" name="song" placeholder="Enter a song." ></td>
+                </tr>
+
+            </table>
+        </form>
 
         <ul>
-            <li><a href="/songs">Back to home!</a></li>
+            <li class="text-right"><a href="/songs">Back to home!</a></li>
         </ul>
 
     </body>

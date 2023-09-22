@@ -24,7 +24,7 @@
        </ul>
 
        <ul>
-         <li><a href="/songs/create">Create!</a></li>
+         <li class="text-right"><a href="/songs/create">Create!</a></li>
        </ul>
 
     </body>
