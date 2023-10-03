@@ -19,7 +19,7 @@
        <h1 class="text-2xl font-medium">Songs:</h1>
        <ul>
             @foreach($songs as $song)
-                <li><a href="/songs/{{$loop->index}}">{{$song}}</a></li>
+                <li><a href="/songs/{{$song->id}}">{{$song->title}}</a></li>
             @endforeach
        </ul>
 

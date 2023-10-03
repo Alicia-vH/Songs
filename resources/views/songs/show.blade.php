@@ -16,10 +16,11 @@
 
     <body class="bg-pastel text-center text-black">
         <br>
-        <h1 class="font-bold">Het gekozen nummer: {{$song}}</h1>
+        <h1 class="font-bold">Het gekozen nummer: {{$song->title}}</h1>
+        <h2>Artist: {{$song->singer}}</h2>
 
         <ul>
-            <li class="text-right"><a href="/songs/{{$index}}/edit">Edit!</a></li>
+            <li class="text-right"><a href="/songs/{{$song->id}}/edit">Edit!</a></li>
             <li class="text-right"><a href="/songs">Back to home!</a></li>
         </ul>
 
