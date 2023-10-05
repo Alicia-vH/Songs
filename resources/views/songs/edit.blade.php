@@ -17,35 +17,26 @@
 <body class="bg-pastel text-center text-black">
     <br>
     <form action="" method="POST">
-        <table class="table-auto">
-            <tbody>
-                <tr>
-                    <th>Song:</th>
-                    <td><input
-                            class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            type="text" name="song" placeholder="Edit this song." value="{{ $song->title }}">
-                    </td>
-                </tr>
+        <div class="mb-4">
+            <h1>Song:</h1>
+            <input class="w-64" type="text" id="title" name="title" class="form-input" value="{{ $song->title }}">
+        </div>
 
-                <tr>
-                    <th>Artist:</th>
-                    <td><input
-                            class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            type="text" name="artist" placeholder="Edit this artist." value="{{ $song->singer }}">
-                    </td>
-                </tr>
-                <tr>
-                    <button type="submit"
-                        class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Submit!</button>
-                </tr>
-            </tbody>
-        </table>
+        <div class="mb-4">
+            <h1>Artist:</h1>
+            <input class="w-64" type="text" id="singer" name="singer" class="form-input" value="{{ $song->singer }}">
+        </div>
+
+        <div class="mb-4">
+            <button type="submit"
+            class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Submit!</button>
+        </div>
     </form>
 
-    <ul>
-        <li class="text-right"><a href="/songs/create">Create!</a></li>
-        <li class="text-right"><a href="/songs">Back to home!</a></li>
-    </ul>
+    <div class="mb-4">
+        <a href="{{ route('songs.create') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Create!</a>
+        <a href="{{ route('songs.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Back to home!</a>
+    </div>
 
 </body>
 

@@ -22,15 +22,15 @@ class SongRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titel' => 'required|string|max:100',
+            'title' => 'required|string|max:100',
             'singer' => 'string|max:255',
         ];
     }
     public function messages(): array
     {
         return [
-            'titel.max' => 'Een titel mag maximaal 100 characters bevaten en moet ingevuld zijn.',
-            'singer.max' => 'hoeft niet persé in gevuld te zijn maximaal aantal caracters zijn 255.',
+            'title.max' => 'Required, max 100 characters.',
+            'singer.max' => 'Not required, however, max characters is 255.',
         ];
     }
 }

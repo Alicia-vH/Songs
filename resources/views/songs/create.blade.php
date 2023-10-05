@@ -19,22 +19,21 @@
         <form method="POST" action="{{route('songs.store')}}">
             @csrf
             <div class="mb-4 text-black">
-                <label for="title" class="block text-sm font-medium text-white">Title</label>
+                <label for="title" class="block text-sm font-medium text-black">Title:</label>
                 <input type="text" id="title" name="title" class="form-input">
             </div>
             <div class="mb-4 text-black">
-                <label for="singer" class="block text-sm font-medium text-white">Singer</label>
+                <label for="singer" class="block text-sm font-medium text-black">Singer:</label>
                 <input type="text" id="singer" name="singer" class="form-input">
             </div>
-            <div class="flex items-center">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create</button>
-                <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
+            <div class="mb-4">
+                <button type="submit"class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Create</button>
+            </div>
+            <div class="mb-4">
+                <a href="{{ route('songs.index') }}" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Back to home!</a>
             </div>
         </form>
 
-        <ul>
-            <li class="text-right"><a href="/songs">Back to home!</a></li>
-        </ul>
 
     </body>
 

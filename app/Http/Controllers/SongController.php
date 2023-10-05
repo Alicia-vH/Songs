@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\SongRequest;
 use Illuminate\Http\Request;
 use App\Models\Song;
 
@@ -31,11 +31,11 @@ class SongController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SongRequest $request)
     {
       Song:: create($request->validated());
 
-      return redirect()->route('songs.index')->with('sucsses','Song good saved');
+      return redirect()->route('songs.index')->with('Succes','Your song has been properly saved.');
 
     }
 
