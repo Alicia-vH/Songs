@@ -16,7 +16,7 @@
 
     <body class="bg-pastel text-center text-black">
         <br>
-        <form action="{{route('songs.store')}}" method="POST" action="{{route('songs.store')}}">
+        <form method="POST" action="{{route('songs.store')}}">
             @csrf
             <div class="mb-4 text-black">
                 <label for="title" class="block text-sm font-medium text-white">Title</label>

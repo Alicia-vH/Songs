@@ -17,8 +17,12 @@ use App\Http\Controllers\SongController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/songs', [SongController::class, 'index'])  -> name('songs.index');
-Route::get('/songs/create', [SongController::class, 'create'])  -> name('songs.create');
-Route::get('/songs/{index}', [SongController::class, 'show'])  -> name('songs.show');
-Route::get('/songs/{index}/edit', [SongController::class, 'edit'])  -> name('songs.edit');
+Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
+Route::get('/songs/create', [SongController::class, 'create'])->name('songs.create');
+
+Route::get('/songs/{index}', [SongController::class, 'show'])->name('songs.show');
+Route::get('/songs/{index}/edit', [SongController::class, 'edit'])->name('songs.edit');
+Route::put('/songs/{song}', [SongController::class, 'update'])->name('songs.update');
+Route::post('/songs/', [SongController::class, 'store'])->name('songs.store');
+Route::delete('/songs/{song}', [SongController::class, 'destroy'])->name('songs.destroy');
 
