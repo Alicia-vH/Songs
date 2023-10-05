@@ -16,16 +16,20 @@
 
     <body class="bg-pastel text-center text-black">
         <br>
-        <form action="" method="POST">
-            <table>
-                <tr>
-                    <td>Song:</td>
-                    <td><input type="text" name="song" placeholder="Enter a song." ></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="submit" value="Submit"></td>
-                </tr>
-            </table>
+        <form action="{{route('songs.store')}}" method="POST" action="{{route('songs.store')}}">
+            @csrf
+            <div class="mb-4 text-black">
+                <label for="title" class="block text-sm font-medium text-white">Title</label>
+                <input type="text" id="title" name="title" class="form-input">
+            </div>
+            <div class="mb-4 text-black">
+                <label for="singer" class="block text-sm font-medium text-white">Singer</label>
+                <input type="text" id="singer" name="singer" class="form-input">
+            </div>
+            <div class="flex items-center">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Create</button>
+                <a href="{{ route('songs.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Back</a>
+            </div>
         </form>
 
         <ul>

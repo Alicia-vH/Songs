@@ -24,6 +24,7 @@ class SongController extends Controller
      */
     public function create()
     {
+
         return view('songs.create');
     }
 
@@ -32,7 +33,10 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Song:: create($request->validated());
+
+      return redirect()->route('songs.index')->with('sucsses','Song good saved');
+
     }
 
     /**
