@@ -16,11 +16,11 @@
 
     <body class="bg-pastel text-center text-black">
         <br>
-        <form method="POST" action="{{route('songs.store')}}" onsubmit="return confirm('Your song has been successfully created!')">
+        <form method="POST" action="{{route('songs.store')}}">
             @csrf
             <div class="mb-4 text-black">
                 <label for="title" class="block text-sm font-medium text-black">Title:</label>
-                <input type="text" id="title" name="title" class="form-input" maxlength="100">
+                <input type="text" id="title" name="title" class="form-input" maxlength="100" required>
             </div>
             <div class="mb-4 text-black">
                 <label for="singer" class="block text-sm font-medium text-black">Artist:</label>

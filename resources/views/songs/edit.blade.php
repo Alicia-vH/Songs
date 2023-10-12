@@ -16,12 +16,12 @@
 
 <body class="bg-pastel text-center text-black">
     <br>
-    <form method="POST" action="{{route('songs.update', $song->id)}}" onsubmit="return confirm('Your song has been successfully updated!')">
+    <form method="POST" action="{{route('songs.update', $song->id)}}">
         @csrf
         @method('PUT')
         <div class="mb-4 text-black">
             <label for="title" class="block text-sm font-medium text-black">Title:</label>
-            <input type="text" id="title" name="title" class="form-input" maxlength="100" value="{{ $song->title }}">
+            <input type="text" id="title" name="title" class="form-input" maxlength="100" required value="{{ $song->title }}">
         </div>
         <div class="mb-4 text-black">
             <label for="singer" class="block text-sm font-medium text-black">Artist:</label>
