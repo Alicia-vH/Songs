@@ -16,20 +16,19 @@
 
 <body class="bg-pastel text-center text-black">
     <br>
-    <form action="" method="POST">
-        <div class="mb-4">
-            <h1>Song:</h1>
-            <input class="w-64" type="text" id="title" name="title" class="form-input" value="{{ $song->title }}">
+    <form method="POST" action="{{route('songs.update', $song->id)}}" onsubmit="return confirm('Your song has been successfully updated!')">
+        @csrf
+        @method('PUT')
+        <div class="mb-4 text-black">
+            <label for="title" class="block text-sm font-medium text-black">Title:</label>
+            <input type="text" id="title" name="title" class="form-input" maxlength="100" value="{{ $song->title }}">
         </div>
-
-        <div class="mb-4">
-            <h1>Artist:</h1>
-            <input class="w-64" type="text" id="singer" name="singer" class="form-input" value="{{ $song->singer }}">
+        <div class="mb-4 text-black">
+            <label for="singer" class="block text-sm font-medium text-black">Artist:</label>
+            <input type="text" id="singer" name="singer" class="form-input" maxlength="255" value="{{ $song->singer }}">
         </div>
-
         <div class="mb-4">
-            <button type="submit"
-            class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Submit!</button>
+            <button type="submit" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Submit!</button>
         </div>
     </form>
 

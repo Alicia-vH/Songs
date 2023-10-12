@@ -33,9 +33,14 @@ class SongController extends Controller
      */
     public function store(SongRequest $request)
     {
-      Song:: create($request->validated());
+        $request->validate([
+            'title' => 'required|max:100',
+            'singer' => 'max:255'
+        ]);
 
-      return redirect()->route('songs.index')->with('Succes','Your song has been properly saved.');
+        Song:: create($request->validated());
+
+        return redirect()->route('songs.index')->with('Succes','Your song has been properly saved.');
 
     }
 
@@ -62,9 +67,17 @@ class SongController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $song)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'singer' => 'max:255'
+        ]);
+
+        Song::findOrFail($song)->update($validatedData);
+
+        return redirect()->route('songs.index')->with('Succes','Your song has been properly updated.');
+
     }
 
     /**
@@ -72,6 +85,15 @@ class SongController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $song = Song::find($id);
+
+        if (!$song)
+        {
+            return redirect()->route('songs.index')->with('error', 'Song not found');
+        }
+        $song -> delete();
+        {
+            return redirect()->route('songs.index')->with('error', 'Song is good');
+        }
     }
 }
