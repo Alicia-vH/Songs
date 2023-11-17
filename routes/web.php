@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SongController;
 
+use App\Http\Controllers\BandController;
+
+use App\Http\Controllers\AlbumController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +21,8 @@ use App\Http\Controllers\SongController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Song
 Route::get('/songs', [SongController::class, 'index'])->name('songs.index');
 Route::get('/songs/create', [SongController::class, 'create'])->name('songs.create');
 
@@ -26,3 +32,10 @@ Route::put('/songs/{song}', [SongController::class, 'update'])->name('songs.upda
 Route::post('/songs/', [SongController::class, 'store'])->name('songs.store');
 Route::delete('/songs/{song}', [SongController::class, 'destroy'])->name('songs.destroy');
 
+//Band
+Route::resource('/bands', BandController::class);
+
+
+
+//Album
+Route::resource('/albums', AlbumController::class);
