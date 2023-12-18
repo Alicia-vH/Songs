@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BandRequest;
 use App\Models\Band;
 use Illuminate\Http\Request;
 
@@ -30,16 +31,17 @@ class BandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BandRequest $request)
     {
-        $data = $request->validate([
+        /*dd($request->all();*/
+        /*$data = $request->validate([
             'name' => 'required|max:100',
             'genre' => 'max:255',
             'founded' => 'max:4',
-            'active_till' => 'datetime',
-        ]);
+            'active_till' => 'date',
+        ]);*/
 
-        Band:: create($data);
+        Band:: create($request->validated());
 
         return redirect()->route('bands.index')->with('Succes','Your band has been properly saved.');
     }
@@ -71,7 +73,7 @@ class BandController extends Controller
             'name' => 'required|max:100',
             'genre' => 'max:255',
             'founded' => 'max:4',
-            'active_till' => 'date_format:Y-m-d H:i:s',
+            'active_till' => 'date_format:Y-m-d',
         ]);
 
         $band = Band::findOrFail($id);

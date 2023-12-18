@@ -24,7 +24,7 @@ class AlbumRequest extends FormRequest
         return [
             'name' => 'required|string|max:100',
             'year' => 'string|max:4',
-            'times_sold' => 'int|max:100000'
+            'times_sold' => 'int|max:500000'
         ];
     }
 }

@@ -30,12 +30,12 @@ class AlbumController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AlbumRequest $request)
     {
          $data = $request->validate([
             'name' => 'required|string|max:100',
             'year' => 'string|max:4',
-            'times_sold' => 'int|max:100000'
+            'times_sold' => 'int|max:500000'
         ]);
 
         Album:: create($data);
@@ -68,7 +68,7 @@ class AlbumController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'year' => 'string|max:4',
-            'times_sold' => 'int|max:100000'
+            'times_sold' => 'int|max:500000'
         ]);
 
         Album::findOrFail($album)->update($validatedData);
