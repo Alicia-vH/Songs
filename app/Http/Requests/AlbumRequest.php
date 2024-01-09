@@ -24,6 +24,7 @@ class AlbumRequest extends FormRequest
         return [
             'name' => 'required|string|max:100',
             'year' => 'string|max:4',
+            'band_id' => 'required',
             'times_sold' => 'int|max:500000'
         ];
     }

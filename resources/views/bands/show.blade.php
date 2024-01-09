@@ -21,6 +21,17 @@
         <h2>Genre: {{$band->genre}}</h2>
         <h3>Founded: {{$band->founded}}</h3>
         <h4>Active Till: {{$band->active_till}}</h4>
+
+         <h5 class="text-2xl font-bold">Albums created by this band:</h5>
+            <ul>
+                @foreach ($albums as $album)
+                    <li>{{$album->name}}</li>
+                @endforeach
+            </ul>
+            <div class="flex items-center">
+                @auth
+                    <a href="{{route('bands.edit', ['index' => $band-$id])}}">Edit</a>@endauth
+            </div>
         </div>
 
         <div class="mb-4">

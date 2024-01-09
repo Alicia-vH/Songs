@@ -46,11 +46,19 @@ class AlbumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    /*public function show(string $id)
     {
         $album = Album::find($id);
+        $bands =
 
         return view('albums.show', ['album' => $album]);
+    }*/
+    public function show($id)
+    {
+        $album = Album::findOrFail($id);
+        $band = $album->band; // Get the band associated with the album
+
+        return view('albums.show', compact('album', 'band'));
     }
 
     /**
