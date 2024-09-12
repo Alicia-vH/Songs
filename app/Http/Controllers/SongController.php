@@ -12,9 +12,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        $songs = Song::all();
-
-
+        $songs = Song::all(); // Get all songs
 
         return view('songs.index', ['songs' => $songs]);
     }
@@ -33,12 +31,12 @@ class SongController extends Controller
      */
     public function store(SongRequest $request)
     {
+        // Validate the request
         $request->validate([
             'title' => 'required|max:100',
-            'singer' => 'max:255'
         ]);
 
-        Song:: create($request->validated());
+        Song:: create($request->validated()); // Create a new song
 
         return redirect()->route('songs.index')->with('Succes','Your song has been properly saved.');
 
@@ -49,7 +47,7 @@ class SongController extends Controller
      */
     public function show(string $id)
     {
-        $song = Song::find($id);
+        $song = Song::find($id); // Get the song
 
         return view('songs.show', ['song' => $song]);
     }
@@ -59,7 +57,7 @@ class SongController extends Controller
      */
     public function edit(string $id)
     {
-        $song = Song::find($id);
+        $song = Song::find($id); // Get the song
 
         return view('songs.edit', ['song' => $song]);
     }
@@ -69,11 +67,12 @@ class SongController extends Controller
      */
     public function update(Request $request, string $song)
     {
+        // Validate the request
         $validatedData = $request->validate([
             'title' => 'required|max:100',
         ]);
 
-        Song::findOrFail($song)->update($validatedData);
+        Song::findOrFail($song)->update($validatedData); // Update the song
 
         return redirect()->route('songs.index')->with('Succes','Your song has been properly updated.');
 
@@ -84,15 +83,16 @@ class SongController extends Controller
      */
     public function destroy(string $id)
     {
-        $song = Song::find($id);
+        $song = Song::find($id); // Find the song
 
+        // Check if the song exists
         if (!$song)
         {
-            return redirect()->route('songs.index')->with('error', 'Song not found');
+            return redirect()->route('songs.index')->with('error', 'Song not found'); // Redirect back if song not found
         }
         $song -> delete();
         {
-            return redirect()->route('songs.index')->with('error', 'Song is good');
+            return redirect()->route('songs.index')->with('error', 'Song is good'); // Redirect back if song not found
         }
     }
 }

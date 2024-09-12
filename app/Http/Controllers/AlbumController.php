@@ -15,9 +15,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::all();
-        $bands = Band::all();
-        $songs = Song::all();
+        $albums = Album::all(); // Get all albums
+        $bands = Band::all(); // Get all bands
+        $songs = Song::all(); // Get all songs
 
         return view('albums.index', compact('albums', 'bands','songs'));
     }
@@ -27,9 +27,9 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        $album = new Album();
-        $bands = Band::all();
-        $songs = Song::all();
+        $album = new Album(); // Create a new album
+        $bands = Band::all(); // Get all bands
+        $songs = Song::all(); // Get all songs
 
         return view('albums.create', compact('album','bands', 'songs'));
     }
@@ -39,17 +39,6 @@ class AlbumController extends Controller
      */
     public function store(AlbumRequest $request)
     {
-//         $data = $request->validate([
-//            'name' => 'required|string|max:100',
-//            'year' => 'string|max:4',
-//            'times_sold' => 'int|max:500000',
-//            'band' => 'max:50',
-//        ]);
-//
-//        Album:: create($data);
-//
-//        return redirect()->route('albums.index')->with('Succes','Your album has been properly saved.');
-
         // Validate the request
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
@@ -60,7 +49,7 @@ class AlbumController extends Controller
             'album_songs.*' => 'exists:songs,id'
         ]);
 
-        // Create the album
+       // Create a new album
         $album = Album::create([
             'name' => $validatedData['name'],
             'year' => $validatedData['year'],
@@ -68,7 +57,7 @@ class AlbumController extends Controller
             'band_id' => $validatedData['band_id']
         ]);
 
-        // Attach songs to the album if any
+        // Attaching song to album
         if (isset($validatedData['album_songs'])) {
             $album->songs()->attach($validatedData['album_songs']);
         }
@@ -79,18 +68,11 @@ class AlbumController extends Controller
     /**
      * Display the specified resource.
      */
-    /*public function show(string $id)
-    {
-        $album = Album::find($id);
-        $bands =
-
-        return view('albums.show', ['album' => $album]);
-    }*/
     public function show($id)
     {
-        $album = Album::find($id);
+        $album = Album::find($id); // Find the album
         $band = $album->band; // Get the band associated with the album
-        $song = $album->song;
+        $song = $album->song; // Get the song associated with the album
 
         return view('albums.show', compact('album', 'band'), compact('album', 'song'));
     }
@@ -100,27 +82,17 @@ class AlbumController extends Controller
      */
     public function edit(string $id)
     {
-        $album = Album::find($id);
-        $band = $album->band;
-        $bands = Band::all();
-        $songs = Song::all();
+        $album = Album::find($id); // Find the album
+        $band = $album->band; // Get the band associated with the album
+        $bands = Band::all(); // Get all bands
+        $songs = Song::all(); // Get all songs
 
         return view('albums.edit', compact('album', 'band', 'songs', 'bands'));
     }
 
     public function update(Request $request, $id)
     {
-//        $validatedData = $request->validate([
-//            'name' => 'required|string|max:100',
-//            'year' => 'string|max:4',
-//            'times_sold' => 'int|max:500000',
-//            'band' => 'max:150',
-//            'song' => 'max:150',
-//        ]);
-//
-//        Album::findOrFail($album)->update($validatedData);
-//
-//        return redirect()->route('albums.index')->with('Succes','Your album has been properly updated.');
+        // Validate the request
         $album = Album::findOrFail($id);
 
         // Update album details
@@ -145,15 +117,16 @@ class AlbumController extends Controller
      */
     public function destroy(string $id)
     {
-        $album = Album::find($id);
+        $album = Album::find($id); // Find the album
 
+        // Check if the album exists
         if (!$album)
         {
-            return redirect()->route('albums.index')->with('error', 'Album not found');
+            return redirect()->route('albums.index')->with('error', 'Album not found'); // Redirect back if the album is not found
         }
         $album -> delete();
         {
-            return redirect()->route('albums.index')->with('error', 'Album is good');
+            return redirect()->route('albums.index')->with('error', 'Album is good'); // Redirect back if the album is deleted
         }
     }
 }

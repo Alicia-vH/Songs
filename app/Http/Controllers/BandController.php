@@ -14,8 +14,8 @@ class BandController extends Controller
      */
     public function index()
     {
-        $bands = Band::all();
-        $albums = Album::all();
+        $bands = Band::all(); // Get all bands
+        $albums = Album::all(); // Get all albums
 
         return view('bands.index', compact('bands', 'albums'));
     }
@@ -25,8 +25,8 @@ class BandController extends Controller
      */
     public function create()
     {
-//        $bands = new Band();
-        $albums = Album::all();
+
+        $albums = Album::all(); // Get all albums
 
         return view('bands.create', compact( 'albums'));
     }
@@ -36,37 +36,17 @@ class BandController extends Controller
      */
     public function store(Request $request)
     {
-//        /*dd($request->all();*/
-//        $data = $request->validate([
-//            'name' => 'required|max:100',
-//            'genre' => 'max:255',
-//            'founded' => 'max:4',
-//            'active_till' => 'date',
-////            'band_id' => 'required',
-//        ]);
-//
-//        Band:: create($data);
-//var_dump($request);
-//        $band = Band::findOrFail($request);
        // dd($request->all());
+
+        // Validate the request
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'genre' => 'nullable|string|max:255',
             'founded' => 'nullable|integer|digits:4',
             'active_till' => 'nullable|string|max:255',
-//            'album_id' => 'exists:albums,id',
         ]);
-//        var_dump($_POST['band_id']);
-//        exit;
-//        $band = new Band();
-//        $band->name = $request->name;
-//        $band->save();
-        // Update the band
-//        $addresses = $request->get('band_id');
-//     var_dump($addresses);exit;
-        $band = Band::create($validatedData);
-//        $band->albums()->createMany($addresses);
 
+        Band::create($validatedData); // Create a new band
 
         return redirect()->route('bands.index')->with('Succes','Your band has been properly saved.');
     }
@@ -76,9 +56,9 @@ class BandController extends Controller
      */
     public function show($id)
     {
-        $band = Band::find($id);
-        $band = Band::with('albums')->findOrFail($id);
-        $albums = $band->albums;
+       // $band = Band::find($id);
+        $band = Band::with('albums')->findOrFail($id); // Get the band with albums
+        $albums = $band->albums; // Get the albums of the band
 
         return view('bands.show', compact('band', 'albums'));
     }
@@ -88,29 +68,17 @@ class BandController extends Controller
      */
     public function edit(string $id)
     {
-        $album = Album::with('band')->findOrFail($id);
-        $band = Band::all();
-//        $albums = Album::all();
+        $band = Band::find($id); // Find the band
+        $albums = Album::all(); // Get all albums
 
-        return view('bands.edit', ['band' => $band], compact('album'));
+        return view('bands.edit', ['band' => $band], compact('albums'));
     }
 
 
     public function update(BandRequest $request, $id)
     {
-//        $request->validate([
-//            'name' => 'required|max:100',
-//            'genre' => 'max:255',
-//            'founded' => 'max:4',
-//            'active_till' => 'date_format:Y-m-d',
-//        ]);
-//
-//        $band = Band::findOrFail($id);
-//        $band->update($request->all());
-//
-//        return redirect()->route('bands.index')->with('Succes','Your band has been properly updated.');
 
-        $band = Band::findOrFail($id);
+        $band = Band::findOrFail($id); // Find the band
 
         // Validate the request data
         $validatedData = $request->validate([
@@ -132,15 +100,16 @@ class BandController extends Controller
      */
     public function destroy(string $id)
     {
-        $band = Band::find($id);
+        $band = Band::find($id); // Find the band
 
+        // Check if the band exists
         if (!$band)
         {
-            return redirect()->route('bands.index')->with('error', 'Band not found');
+            return redirect()->route('bands.index')->with('error', 'Band not found'); // Redirect back if band not found
         }
         $band -> delete();
         {
-            return redirect()->route('bands.index')->with('error', 'Band is good');
+            return redirect()->route('bands.index')->with('error', 'Band is good'); // Redirect back if band not found
         }
     }
 }
