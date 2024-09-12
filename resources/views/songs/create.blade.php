@@ -12,9 +12,12 @@
         <link href="https://fonts.bunny.net/css?family=dotgothic16:400,600&display=swap" rel="stylesheet" />
     </head>
 
-    <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Create</header>
+{{--    <header class="bg-pink h-50 text-center text-light font-bold text-5xl">Create</header>--}}
 
     <body class="bg-pastel text-center text-black">
+    <header style="background: linear-gradient(to right, #ec4899, #e0e0e0); height: 100px; text-align: center; color: white; font-size: 2.5rem; font-weight: bold;" class="bg-gradient-to-r from-pink-500 to-pastel h-50 text-center text-light font-bold text-5xl">
+        Create a Song
+    </header>
         <br>
         <form method="POST" action="{{route('songs.store')}}">
             @csrf
