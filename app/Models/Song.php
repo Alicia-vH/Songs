@@ -10,11 +10,13 @@ class Song extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','singer'];
+    protected $fillable = ['title'];
+
+//'singer'
 
     public function albums(): BelongsToMany
     {
-        return $this->belongsToMany(Album::class, 'album_songs');
+        return $this->belongsToMany(Album::class, 'album_song');
     }
 
 

@@ -12,20 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->unsignedBigInteger('band_id')->nullable();
-
-            $table->foreign('band_id')->references('id')->on('bands');
+            $table->id();
+            $table->string('name', 100);
+            $table->integer('year')->nullable();
+            $table->integer('times_sold')->nullable();
+            $table->foreignId('band_id')->constrained();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
-        Schema::table('albums', function (Blueprint $table) {
-            $table->dropForeign(['band_id']);
-            $table->dropColumn('band_id');
-        });
+        Schema::dropIfExists('albums');
     }
 };

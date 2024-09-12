@@ -17,12 +17,19 @@
     <body class="bg-pastel text-center text-black">
     <br>
         <div class="mb-4">
-        <h1 class="font-bold">Het Gekozen Band: {{$band->name}}</h1>
-        <h2>Genre: {{$band->genre}}</h2>
-        <h3>Founded: {{$band->founded}}</h3>
-        <h4>Active Till: {{$band->active_till}}</h4>
-
-         <h5 class="text-2xl font-bold">Albums created by this band:</h5>
+        <h1 class="font-bold text-1xl">Het Gekozen Band: </h1>
+            <p>{{$band->name}}</p>
+            <br>
+        <h2 class="font-bold text-1xl">Genre: </h2>
+            <p>{{$band->genre}}</p>
+            <br>
+        <h3 class="font-bold text-1xl">Founded: </h3>
+            <p>{{$band->founded}}</p>
+            <br>
+        <h4 class="font-bold text-1xl">Active Till: </h4>
+            <p>{{$band->active_till}}</p>
+            <br>
+         <h5 class="text-1xl font-bold">Albums created by this band:</h5>
             <ul>
                 @foreach ($albums as $album)
                     <li>{{$album->name}}</li>
@@ -33,6 +40,7 @@
                     <a href="{{route('bands.edit', ['index' => $band-$id])}}">Edit</a>@endauth
             </div>
         </div>
+    <br>
 
         <div class="mb-4">
            <a href="/bands/{{$band->id}}/edit" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-pink dark:hover:bg-gray-700">Edit!</a>

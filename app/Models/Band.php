@@ -10,7 +10,7 @@ class Band extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','genre', 'founded', 'active_till'];
+    protected $fillable = ['name','genre', 'founded', 'active_till', 'album_id'];
 
     public function albums(): HasMany
     {

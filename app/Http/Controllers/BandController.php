@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BandRequest;
+use App\Models\Album;
 use App\Models\Band;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,9 @@ class BandController extends Controller
     public function index()
     {
         $bands = Band::all();
+        $albums = Album::all();
 
-
-
-        return view('bands.index', ['bands' => $bands]);
+        return view('bands.index', compact('bands', 'albums'));
     }
 
     /**
@@ -25,23 +25,48 @@ class BandController extends Controller
      */
     public function create()
     {
-        return view('bands.create');
+//        $bands = new Band();
+        $albums = Album::all();
+
+        return view('bands.create', compact( 'albums'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BandRequest $request)
+    public function store(Request $request)
     {
-        /*dd($request->all();*/
-        /*$data = $request->validate([
-            'name' => 'required|max:100',
-            'genre' => 'max:255',
-            'founded' => 'max:4',
-            'active_till' => 'date',
-        ]);*/
+//        /*dd($request->all();*/
+//        $data = $request->validate([
+//            'name' => 'required|max:100',
+//            'genre' => 'max:255',
+//            'founded' => 'max:4',
+//            'active_till' => 'date',
+////            'band_id' => 'required',
+//        ]);
+//
+//        Band:: create($data);
+//var_dump($request);
+//        $band = Band::findOrFail($request);
+       // dd($request->all());
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:100',
+            'genre' => 'nullable|string|max:255',
+            'founded' => 'nullable|integer|digits:4',
+            'active_till' => 'nullable|string|max:255',
+//            'album_id' => 'exists:albums,id',
+        ]);
+//        var_dump($_POST['band_id']);
+//        exit;
+//        $band = new Band();
+//        $band->name = $request->name;
+//        $band->save();
+        // Update the band
+//        $addresses = $request->get('band_id');
+//     var_dump($addresses);exit;
+        $band = Band::create($validatedData);
+//        $band->albums()->createMany($addresses);
 
-        Band:: create($request->validated());
 
         return redirect()->route('bands.index')->with('Succes','Your band has been properly saved.');
     }
@@ -52,6 +77,7 @@ class BandController extends Controller
     public function show($id)
     {
         $band = Band::find($id);
+        $band = Band::with('albums')->findOrFail($id);
         $albums = $band->albums;
 
         return view('bands.show', compact('band', 'albums'));
@@ -62,25 +88,43 @@ class BandController extends Controller
      */
     public function edit(string $id)
     {
-        $band = Band::find($id);
+        $album = Album::with('band')->findOrFail($id);
+        $band = Band::all();
+//        $albums = Album::all();
 
-        return view('bands.edit', ['band' => $band]);
+        return view('bands.edit', ['band' => $band], compact('album'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(BandRequest $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:100',
-            'genre' => 'max:255',
-            'founded' => 'max:4',
-            'active_till' => 'date_format:Y-m-d',
-        ]);
+//        $request->validate([
+//            'name' => 'required|max:100',
+//            'genre' => 'max:255',
+//            'founded' => 'max:4',
+//            'active_till' => 'date_format:Y-m-d',
+//        ]);
+//
+//        $band = Band::findOrFail($id);
+//        $band->update($request->all());
+//
+//        return redirect()->route('bands.index')->with('Succes','Your band has been properly updated.');
 
         $band = Band::findOrFail($id);
-        $band->update($request->all());
 
-        return redirect()->route('bands.index')->with('Succes','Your band has been properly updated.');
+        // Validate the request data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:100',
+            'genre' => 'nullable|string|max:255',
+            'founded' => 'nullable|integer',
+            'active_till' => 'nullable|string|max:255',
+        ]);
+
+        // Update the band
+        $band->update($validatedData);
+
+        return redirect()->route('bands.index')->with('success', 'Band updated successfully.');
+
     }
 
     /**

@@ -71,7 +71,6 @@ class SongController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:100',
-            'singer' => 'max:255'
         ]);
 
         Song::findOrFail($song)->update($validatedData);

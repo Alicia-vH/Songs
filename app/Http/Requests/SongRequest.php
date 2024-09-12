@@ -23,14 +23,14 @@ class SongRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:100',
-            'singer' => 'string|max:255',
+            //'singer' => 'string|max:255',
         ];
     }
     public function messages(): array
     {
         return [
             'title.max' => 'Required, max 100 characters.',
-            'singer.max' => 'Not required, however, max characters is 255.',
+            //'singer.max' => 'Not required, however, max characters is 255.',
         ];
     }
 }
