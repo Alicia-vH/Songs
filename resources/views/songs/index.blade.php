@@ -18,8 +18,6 @@
     <header style="background: linear-gradient(to right, #ec4899, #e0e0e0); height: 100px; text-align: center; color: hotpink; font-size: 2.5rem; font-weight: bold;" class="bg-gradient-to-r from-pink-500 to-pastel h-50 text-center text-light font-bold text-5xl">
         Welcome to <p class="text-white">SONGS</p>
     </header>
-
-        <div></div>
        <br>
        <h1 class="text-2xl font-medium">Songs:</h1>
         <br>
